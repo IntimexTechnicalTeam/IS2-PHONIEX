@@ -1,0 +1,31 @@
+/* style3字體庫 */
+
+@font-face {
+    font-family: 'SourceHanSerifCN-Bold';
+    src: url('/fonts/SourceHanSerifCN-Bold.otf') format('OpenType'), url('/fonts/SourceHanSerifCN-Bold.ttf') format('truetype'), url('/fonts/SourceHanSerifCN-Bold.eot') format('embedded-opentype'), url('/fonts/SourceHanSerifCN-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SourceHanSerifCN-Medium';
+    src: url('/fonts/SourceHanSerifCN-Medium.otf') format('OpenType'), url('/fonts/SourceHanSerifCN-Medium.ttf') format('truetype'), url('/fonts/SourceHanSerifCN-Medium.eot') format('embedded-opentype'), url('/fonts/SourceHanSerifCN-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Domine-Medium';
+    src: url('/fonts/Domine-Medium.otf') format('OpenType'), url('/fonts/Domine-Medium.ttf') format('truetype'), url('/fonts/Domine-Medium.eot') format('embedded-opentype'), url('/fonts/Domine-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Domine-Bold';
+    src: url('/fonts/Domine-Bold.otf') format('OpenType'), url('/fonts/Domine-Bold.ttf') format('truetype'), url('/fonts/Domine-Bold.eot') format('embedded-opentype'), url('/fonts/Domine-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Domine-Regular';
+    src: url('/fonts/Domine-Regular.otf') format('OpenType'), url('/fonts/Domine-Regular.ttf') format('truetype'), url('/fonts/Domine-Regular.eot') format('embedded-opentype'), url('/fonts/Domine-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Domine-SemiBold';
+    src: url('/fonts/Domine-SemiBold.otf') format('OpenType'), url('/fonts/Domine-SemiBold.ttf') format('truetype'), url('/fonts/Domine-SemiBold.eot') format('embedded-opentype'), url('/fonts/Domine-SemiBold.woff') format('woff');
+}
