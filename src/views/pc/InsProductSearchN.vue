@@ -23,7 +23,19 @@
           <!-- <span class="el-icon-s-operation"></span> -->
           <b>{{ $t("product.productclassification") }}</b>
         </div>
-        <div class="Sortlist">
+        <div class="sortbox">
+          <p class="sortTitle" @click="showList=!showList">
+            {{$t('product.Paixu')}}
+          </p>
+          <transition name="el-fade-in-linear">
+            <ul class="sortList" v-if="showList">
+              <li @click="handleCommand('desc')" :style="{'color':sort=='desc'?'#b59e72':'#999999'}">{{$t('product.PriceHL')}}</li>
+              <li @click="handleCommand('asc')" :style="{'color':sort=='asc'?'#b59e72':'#999999'}">{{$t('product.PriceLH')}}</li>
+            </ul>
+          </transition>
+        </div>
+
+        <!-- <div class="Sortlist">
               <div class="input" @click="openValue">
                 <input
                   v-model="Character"
@@ -50,7 +62,7 @@
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> -->
         <!-- <ul>
           <li @click="showSearchSlide">
             <span class="el-icon-s-operation"></span
@@ -135,6 +147,9 @@ export default class InsProductSearch extends Vue {
   private show: boolean = false;
   Character: string = '';
   searchPrice: number[] = []; // 选中的产品价格范围
+  showList: boolean = false;
+  sort: any = null;
+  SortName: string = '';
   // 搜索关键词
   get searchKey() {
     let a = this.$route.params.key;
@@ -220,6 +235,19 @@ export default class InsProductSearch extends Vue {
     this.searchCatalogs = Catalogs;
     this.searchPrice = Pricevalue;
     console.log(Pricevalue, 'PricevaluePricevalue');
+    this.productSearch();
+  }
+  handleCommand(sort) {
+    this.sort = sort;
+    if (sort === 'newest') {
+      this.SortName = 'createdate';
+      this.PriceItem = 'desc';
+    } else {
+      this.SortName = 'SalePrice';
+      this.PriceItem = sort;
+    }
+    this.showList = false;
+    // history.pushState(null, '', this.$route.path + '?attrs=' + JSON.stringify(this.attrs) + '&catalogs=' + JSON.stringify(this.searchCatalogs) + '&sort=' + this.sort + '&type=1');
     this.productSearch();
   }
 
@@ -316,6 +344,23 @@ export default class InsProductSearch extends Vue {
     font-size: 20px;
     font-family: 'Domine-Bold' !important;
     color: #333333;
+  }
+  .selectBar .input input{
+    font-size: 16px !important;
+  }
+  .selectBar .slidebox b{
+    font-size: 16px !important;
+  }
+  .selectBar .sortList li{
+    font-size: 16px !important;
+  }
+  .sortBox .sortTitle{
+    font-size: 16px !important;
+    font-family: 'Domine-Bold' !important;
+  }
+  .selectBar .sortbox .sortTitle{
+    font-size: 16px !important;
+    font-family: 'Domine-Bold' !important;
   }
 }
 </style>
@@ -487,10 +532,10 @@ export default class InsProductSearch extends Vue {
     float: left;
     cursor: pointer;
     b{
-      font-size: 20px;
+      font-size: 18px;
       // font-family: 'SourceHanSerifCN-Bold';
       line-height: 50px;
-      color: #b59e72;
+      color: rgb(149,126,82);
     }
   }
   .Sortlist{
@@ -500,6 +545,7 @@ export default class InsProductSearch extends Vue {
     background: url('/images/pc/index_66.png') no-repeat center center;
     text-align: center;
     position: relative;
+    cursor: pointer;
   }
   .input {
         width: 100%;
@@ -519,7 +565,7 @@ export default class InsProductSearch extends Vue {
         background-color: rgba(255, 255, 255, 1) !important;
         background: rgba(255, 255, 255, 1) !important;
         font-size: 18px;
-        color: #b59e72;
+        color: rgb(149,126,82);
         // padding-left: 20px;
         height: 39px;
         line-height: 39px;
@@ -531,33 +577,33 @@ export default class InsProductSearch extends Vue {
         margin-top: 6px;
       }
       input::-webkit-input-placeholder {
-        color: #b59e72;
+        color: rgb(149,126,82);
         font-size: 18px;
         background-color: rgba(255, 255, 255, 1) !important;
       }
       /* Mozilla Firefox 4 to 18 */
       input:-moz-placeholder {
-        color: #b59e72;
+        color: rgb(149,126,82);
         opacity: 1;
         font-size: 18px;
         background-color: rgba(255, 255, 255, 1) !important;
       }
       /* Mozilla Firefox 19+ */
       input::-moz-placeholder {
-        color: #b59e72;
+        color: rgb(149,126,82);
         opacity: 1;
         font-size: 18px;
         background-color: rgba(255, 255, 255, 1) !important;
       }
       /* Internet Explorer 10+ */
       input:-ms-input-placeholder {
-        color: #b59e72;
+        color: rgb(149,126,82);
         font-size: 18px;
         background-color: rgba(255, 255, 255, 1) !important;
       }
-      input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #b59e72; } input:-moz-placeholder, textarea:-moz-placeholder { color: #8a867e; } input::-moz-placeholder, textarea::-moz-placeholder { color: #8a867e; } input:-ms-input-placeholder, textarea:-ms-input-placeholder { color: #8a867e; }
+      input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: rgb(149,126,82); } input:-moz-placeholder, textarea:-moz-placeholder { color: rgb(149,126,82); } input::-moz-placeholder, textarea::-moz-placeholder { color: rgb(149,126,82); } input:-ms-input-placeholder, textarea:-ms-input-placeholder { color: rgb(149,126,82); }
       input:disabled{
-      color: #b59e72 !important;
+      color: rgb(149,126,82) !important;
     }
       .input img {
         position: absolute;
@@ -605,5 +651,51 @@ export default class InsProductSearch extends Vue {
           color: rgba(181, 158, 114, 1);
         }
       }
+      .sortbox{
+        float: right;
+        width: 254px;
+        height: 50px;
+        background: url(/images/pc/index_66.png) no-repeat 50%;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+        .sortTitle{
+          font-size: 18px;
+          line-height: 50px;
+          color: rgb(149,126,82) !important;
+          cursor: pointer;
+          font-weight: 700;
+          font-family: 'SourceHanSerifCN-Bold';
+        }
+      }
+
+  .sortList{
+    width: 200px;
+    overflow: hidden;
+    position: absolute;
+    top:60px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing:border-box;
+    background: #fff;
+    border-radius:3px;
+    box-shadow: 0 0 5px #eeedec;
+    z-index: 1;
+    li{
+      font-size: 18px;
+      height: 40px;
+      cursor: pointer;
+      line-height: 40px;
+      padding-left: 0;
+      border-bottom: 1px solid #ebebeb;
+      background-color: #fff;
+      &:last-of-type{
+        border-bottom: none;
+      }
+      &:hover{
+        color: rgb(149,126,82) !important;
+      }
+    }
+  }
 }
 </style>

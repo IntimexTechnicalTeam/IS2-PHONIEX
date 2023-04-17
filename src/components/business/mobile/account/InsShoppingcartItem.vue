@@ -85,7 +85,7 @@ export default class InsShoppingcartItem extends Vue {
     height: 10rem;
 }
 .shoppingcart_item_detail{
-    margin: 0 0 0 1rem;
+    margin: 0 0 0 0.5rem;
     margin-right: 3.5rem;
 }
 .shoppingcart_item_name,

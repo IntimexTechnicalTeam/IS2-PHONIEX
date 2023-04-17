@@ -123,7 +123,7 @@ export default class PkProductInfo extends Vue {
       color: #808080;
       line-height: 1.8rem;
       text-align: justify;
-      word-break: keep-all;
+      word-break: break-word;
     }
   }
 }

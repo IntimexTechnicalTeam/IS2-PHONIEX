@@ -211,6 +211,7 @@ export default class InsMenuLayout extends Vue {
             display: block;
             font-size: 1.6rem;
             color: #666666;
+            margin-top: -10px;
         }
 
         > li {
@@ -223,6 +224,7 @@ export default class InsMenuLayout extends Vue {
             position: relative;
             padding: 1rem !important;
             box-sizing: border-box;
+            background-color: #fff !important;
             &::before{
                 content: '';
                 width: 100%;

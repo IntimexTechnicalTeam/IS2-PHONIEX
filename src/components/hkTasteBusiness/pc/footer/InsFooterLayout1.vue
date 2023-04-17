@@ -16,8 +16,8 @@
           >
             <a
               href="javascript:;"
-              v-if="item.Type === -1"
-              @click="toUrl(item.Url)"
+              v-if="item.Type === 0"
+              @click="toUrl(item)"
             >
               {{ item.Name }}
             </a>
@@ -75,19 +75,23 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class InsFooterLayout1 extends Vue {
   currentYear: number = 0;
   footerMenus: any[] = [];
-  goToTop () {
-    let sTop = document.documentElement.scrollTop;
-    let times = setInterval(() => {
-      sTop -= 50;
-      if (sTop <= 0) {
-        document.documentElement.scrollTop = 0;
-        clearInterval(times);
-      } else {
-        document.documentElement.scrollTop = sTop;
-      }
-    }, 1);
-  }
+  // goToTop () {
+  //   let sTop = document.documentElement.scrollTop;
+  //   let times = setInterval(() => {
+  //     sTop -= 50;
+  //     if (sTop <= 0) {
+  //       document.documentElement.scrollTop = 0;
+  //       clearInterval(times);
+  //     } else {
+  //       document.documentElement.scrollTop = sTop;
+  //     }
+  //   }, 1);
+  // }
   toUrl (n) {
+    if (n.Type < 0) {
+      return;
+    }
+
     if (!n.IsNewWin && n.Url) {
       window.location.href = n.Url;
     } else if (n.IsNewWin && n.Url) {
@@ -96,8 +100,8 @@ export default class InsFooterLayout1 extends Vue {
   }
   To (n) {
     let url = '';
-    if (n.Type === 0) {
-      url = n.Url;
+    if (n.Type === -1) {
+      url = '';
     } else if (n.Type === 1 && n.IsAnchor === false) {
       url = '/cms/catDetail/' + n.Value.Id;
     } else if (n.Type === 1 && n.IsAnchor === true) {
@@ -127,11 +131,12 @@ export default class InsFooterLayout1 extends Vue {
         '&type=0';
     }
     return url;
-    // return n.Type === 1 ? '/cms/catDetail/' + n.Value.Id : n.Type === 2 ? '/CMS/content/' + n.Value.Id : n.Type === 3 ? '/RegNPay/Form/' + n.Value.Id : n.Type === 4 && !this.$store.state.catMenuType ? '/product/cat/' + n.Value.Id : n.Type === 4 && this.$store.state.catMenuType ? '/product/search/-?catalogs=' + JSON.stringify([parseInt(n.Value.Id)]) + '&type=0' : n.Type === 5 ? '/product/search/-?attrs=' + JSON.stringify([{ Id: parseInt(n.Value.Id), Vals: [] }]) + '&type=0' : '/product/search/-?attrs=' + JSON.stringify([{ Id: parseInt(n.ParentId), Vals: [parseInt(n.Value.Id)] }]) + '&type=0';
+    // return n.Type === -1 ? 'javascript:;' : n.Type === 1 ? '/cms/catDetail/' + n.Value.Id : n.Type === 2 ? '/CMS/content/' + n.Value.Id : n.Type === 3 ? '/RegNPay/Form/' + n.Value.Id : n.Type === 4 && !this.$store.state.catMenuType ? '/product/cat/' + n.Value.Id : n.Type === 4 && this.$store.state.catMenuType ? '/product/search/-?catalogs=' + JSON.stringify([parseInt(n.Value.Id)]) + '&type=0' : n.Type === 5 ? '/product/search/-?attrs=' + JSON.stringify([{ Id: parseInt(n.Value.Id), Vals: [] }]) + '&type=0' : '/product/search/-?attrs=' + JSON.stringify([{ Id: parseInt(n.ParentId), Vals: [parseInt(n.Value.Id)] }]) + '&type=0';
   }
   getMenu () {
     this.$Api.promotion.getMenu().then((result) => {
       this.footerMenus = result.ReturnValue.FooterMenus;
+      console.log(result, '查菜单栏');
     });
   }
   created () {

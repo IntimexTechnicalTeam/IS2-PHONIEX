@@ -172,7 +172,7 @@ export default class InsModifyPassword extends Vue {
   white-space: unset;
 }
 .MembercenterMobile .MemberInfoMain {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -237,7 +237,8 @@ export default class InsModifyPassword extends Vue {
 }
 .MembercenterMobile .MemberInfoMain .el-select >.el-input{
   width: 100%!important;
-  border: 1px solid #000;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
 }
 .MembercenterMobile .MemberInfoMain .el-select >.el-input .el-input__inner{
   border: 0px!important;

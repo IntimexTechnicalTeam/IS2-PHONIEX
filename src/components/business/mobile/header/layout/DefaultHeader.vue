@@ -155,6 +155,7 @@ export default class DefaultHeader extends Vue {
         .slide-menu {
           cursor: pointer;
           width: 1.6rem;
+          z-index: 10;
         }
         .close-meun {
           cursor: pointer;

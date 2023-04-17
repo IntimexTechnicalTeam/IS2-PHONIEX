@@ -43,7 +43,7 @@
                   :placeholder="$t('MemberInfo.DDMM')"
                   clearable
                 ></ElInput>
-                  </FormItem>
+              </FormItem>
               <FormItem :label="$t('Register.UserGender')" prop="Gender">
                 <RadioGroup v-model="ruleForm.Gender">
                   <Radio label="0">{{$t('Register.UserMale')}}</Radio>
@@ -283,7 +283,7 @@ export default class InsMemberInfo extends Vue {
   white-space: unset;
 }
 .MembercenterMobile .MemberInfoMain {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     margin-top: 2rem;
     margin-bottom: 2rem;

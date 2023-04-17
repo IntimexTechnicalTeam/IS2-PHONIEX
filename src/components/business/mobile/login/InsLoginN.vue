@@ -67,7 +67,7 @@
                 </InsForm>
                 <!-- <div></div> -->
                 <CheckboxGroup v-model="terms" style="margin: 20px 0 20px 0">
-                    <Checkbox name="type"></Checkbox><span><a href="/CMS/content/20298" target="_blank" style="font-size: 14px;padding-left: 14px;color: #666666;
+                    <Checkbox name="type"></Checkbox><span><a href="/CMS/content/20440" target="_blank" style="font-size: 14px;padding-left: 14px;color: #666666;
     text-decoration: none;">{{$t('Register.RegisterAgree')}}</a></span>
                 </CheckboxGroup>
                 <CheckboxGroup v-model="registerForm.OptOutReceiving" style="margin: 10px 0 20px 0">

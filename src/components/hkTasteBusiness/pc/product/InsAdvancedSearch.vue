@@ -27,8 +27,8 @@
                 :max="9999">
               </el-slider>
               <p class="priceTitle">
-                <span class="T1">HKD {{Pricevalue[0]}}</span>
-                <span class="T2">HKD {{Pricevalue[1]}}</span>
+                <span class="T1">HKD {{Pricevalue[0] | PriceFormat}}</span>
+                <span class="T2">HKD {{Pricevalue[1] | PriceFormat}}</span>
               </p>
             </div>
         </ul>
@@ -352,6 +352,7 @@ export default class InsAdvancedSearch extends Vue {
   .priceRange {
     padding: 20px 18px;
     background-color: #fff;
+    margin-bottom: 50px;
 
     .priceName {
       color: #333333;
@@ -384,11 +385,11 @@ export default class InsAdvancedSearch extends Vue {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 10px 0;
+      margin: 0;
 
       span {
-        font-size: 18px;
-        color: #333;
+        font-size: 16px;
+        color: #999999;
       }
     }
     .open {

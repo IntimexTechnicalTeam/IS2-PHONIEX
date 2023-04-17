@@ -66,7 +66,7 @@ export default class InsMenberCenter extends Vue {
   display: inline-block;
 }
 .MemberInfoMain {
-  width: 1200px;
+  width: 100%;
   margin: 0 auto;
   margin-top: 1rem;
   padding: 2.5%;
@@ -95,7 +95,7 @@ export default class InsMenberCenter extends Vue {
   margin-left: 25%;
 }
 .MembercenterMobile .MemberInfoNav{
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     margin-top: 3rem;
     display: block;
@@ -123,7 +123,7 @@ export default class InsMenberCenter extends Vue {
     text-align: center;
     text-decoration: none;
     display: block;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding: 0.7rem 1rem;
     word-break: break-word;
     color: #b59e72;

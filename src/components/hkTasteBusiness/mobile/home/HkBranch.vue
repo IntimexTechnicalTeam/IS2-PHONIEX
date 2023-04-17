@@ -101,7 +101,7 @@ export default class PkNews extends Vue {
             box-sizing: border-box;
             text-align: justify;
             color: #333333;
-            word-break: keep-all;
+            word-break: break-word;
             img{
               border-radius: 5px;
               display: block;

@@ -645,10 +645,12 @@
 
             .answer-list {
               .answer-one {
-                display: inline-block;
+                display: block;
                 color: #373737;
+                word-break: break-word;
                 a,span {
                   color: #373737;
+                  word-break: break-word;
                 }
 
                 .qty-pay {
@@ -656,6 +658,7 @@
                   display: inline-block;
                   > span {
                     margin-left: 5px;
+                    word-break: break-word;
 
                     &:first-child {
                       margin-left: 0;
@@ -676,6 +679,7 @@
               font-size: 24px;
               font-weight: bold;
               display: inline-block;
+              word-break: break-word;
 
               &:first-child {
                 color: @base_color;

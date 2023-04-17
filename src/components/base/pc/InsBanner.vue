@@ -1,7 +1,7 @@
 <template>
   <div class="banner pcbanner">
     <transition name="slide">
-      <div key="1" v-if="!waiting" style="display:flex;">
+      <div key="1" v-if="!waiting" style="display:flex;width:100%;justify-content: center;">
         <div class="swiperbg">
           <swiper :options="swiperOption" v-if="initSwiper">
             <!-- slides -->
@@ -152,7 +152,7 @@ export default class InsBanner extends Vue {
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
-  z-index: 1000;
+  z-index: 10;
 
 }
 .swiper-container-indexMain img {

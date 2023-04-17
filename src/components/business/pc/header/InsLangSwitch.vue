@@ -51,6 +51,7 @@ export default class InsLangSwitch extends Vue {
       color: #957e52;
       font-family: 'SourceHanSerifCN-Medium';
       font-size: 14px;
+      cursor: pointer;
     }
     .active{
       background: #957e52;

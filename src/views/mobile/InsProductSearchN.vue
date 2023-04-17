@@ -15,12 +15,12 @@
               <!-- <span class="el-icon-s-operation"></span> -->
               <b>{{$t('product.productclassification')}}</b>
             </li>
-            <li>
+            <li class="sortBox">
               <!-- <select v-model="PriceItem" @change="getselect(PriceItem)">
                 <option value="desc">{{$t('product.PriceHL')}}</option>
                 <option value="asc">{{$t('product.PriceLH')}}</option>
               </select> -->
-              <div class="Sortlist">
+              <!-- <div class="Sortlist">
               <div class="input" @click="openValue">
                 <input
                   v-model="Character"
@@ -47,7 +47,17 @@
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> -->
+            <p class="sortTitle" @click="showList=!showList">
+                {{$t('product.Paixu')}}
+              </p>
+              <transition name="el-fade-in-linear">
+              <ul class="sortList" v-if="showList">
+                <li @click="handleCommand('desc')" :style="{'color':sort=='desc'?'#b59e72':'#999999'}">{{$t('product.PriceHL')}}</li>
+                <li @click="handleCommand('asc')" :style="{'color':sort=='asc'?'#b59e72':'#999999'}">{{$t('product.PriceLH')}}</li>
+                <!-- <li @click="handleCommand('newest')" :style="{'color':sort=='newest'?'#999999':'#b59e72'}">{{$t('product.Newest')}}</li> -->
+              </ul>
+              </transition>
             </li>
           </ul>
         </div>
@@ -94,6 +104,9 @@ export default class InsProductSearch extends Vue {
   private show: boolean = false;
   Character: string = '';
   searchPrice: number[] = []; // 选中的产品价格范围
+  showList:boolean = false;
+  SortName:string = '';
+  sort:any = null;
 
   // 搜索关键词
   get searchKey () {
@@ -153,6 +166,19 @@ export default class InsProductSearch extends Vue {
     this.searchCatalogs = Catalogs;
     this.searchPrice = Pricevalue;
     console.log(Pricevalue, 'PricevaluePricevalue');
+    this.productSearch();
+  }
+  handleCommand(sort) {
+    this.sort = sort;
+    if (sort === 'newest') {
+      this.SortName = 'createdate';
+      this.PriceItem = 'desc';
+    } else {
+      this.SortName = 'SalePrice';
+      this.PriceItem = sort;
+    }
+    this.showList = false;
+    history.pushState(null, '', this.$route.path + '?attrs=' + JSON.stringify(this.attrs) + '&catalogs=' + JSON.stringify(this.searchCatalogs) + '&sort=' + this.sort + '&type=1');
     this.productSearch();
   }
   // 重置搜索
@@ -227,6 +253,12 @@ export default class InsProductSearch extends Vue {
     }
   }
 }
+.Sortlist{
+  .input input {
+    color: rgb(149,126,82) !important;
+  }
+}
+
 </style>
 
 <style scoped lang="less">
@@ -254,7 +286,15 @@ export default class InsProductSearch extends Vue {
 .product_item{
     width: 50% !important;
     padding:2rem 0.5rem 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     box-sizing:border-box;
+    &:nth-child(2n+1){
+      padding-left: 0;
+    }
+    &:nth-child(2n){
+      padding-right: 0;
+    }
 }
 
 .loading{
@@ -315,13 +355,13 @@ export default class InsProductSearch extends Vue {
     margin: 0 auto;
     // display: inline-block;
     margin-top: 4rem;
-  ul{
+  > ul{
     width: 100%;
     margin: 0 auto;
     >li{
     float: left;
-    margin-right: 4%;
-    width: 48%;
+    margin-right: 2%;
+    width: 49%;
     background: #FFF;
     // border:1px solid #eee;
     font-size: 1.2rem;
@@ -329,7 +369,7 @@ export default class InsProductSearch extends Vue {
     background-size: contain;
     color: #FFF;
     height: 3.5rem;
-    line-height: 3.5rem;
+    line-height: 3.1rem;
     list-style: none;
     position: relative;
     span{
@@ -344,7 +384,7 @@ export default class InsProductSearch extends Vue {
       text-align: center;
       font-size: 1.2rem;
       // font-weight: 500;
-      color: #b59e72;
+      color: rgb(149,126,82);
       font-family: 'SourceHanSerifCN-Bold';
     }
     select{
@@ -372,8 +412,8 @@ export default class InsProductSearch extends Vue {
 }
 .input {
         width: 100%;
-        height: 3.5rem;
-        line-height: 3.5rem;
+        height: 3.4rem;
+        line-height: 3.4rem;
         padding-left: 0;
         border: none;
         position: relative;
@@ -388,10 +428,10 @@ export default class InsProductSearch extends Vue {
         background-color: transparent !important;
         background: transparent !important;
         font-size: 1.2rem;
-        color: #b59e72;
+        color: rgb(149,126,82);
         // padding-left: 20px;
-        height: 3.5rem;
-        line-height: 3.5rem;
+        height: 3.4rem;
+        line-height: 3.4rem;
         box-sizing: border-box;
         text-align: center;
         border-radius: 0;
@@ -401,33 +441,33 @@ export default class InsProductSearch extends Vue {
         font-family: 'SourceHanSerifCN-Bold';
       }
       input::-webkit-input-placeholder {
-        color: #b59e72;
+        color: rgb(149,126,82);
         font-size: 1.2rem;
         background-color: transparent !important;
       }
       /* Mozilla Firefox 4 to 18 */
       input:-moz-placeholder {
-        color: #b59e72;
+        color: rgb(149,126,82);
         opacity: 1;
         font-size: 1.2rem;
         background-color: transparent !important;
       }
       /* Mozilla Firefox 19+ */
       input::-moz-placeholder {
-        color: #b59e72;
+        color: rgb(149,126,82);
         opacity: 1;
         font-size: 1.2rem;
         background-color: transparent !important;
       }
       /* Internet Explorer 10+ */
       input:-ms-input-placeholder {
-        color: #b59e72;
+        color: rgb(149,126,82);
         font-size: 1.2rem;
         background-color: transparent !important;
       }
-      input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #b59e72; } input:-moz-placeholder, textarea:-moz-placeholder { color: #8a867e; } input::-moz-placeholder, textarea::-moz-placeholder { color: #8a867e; } input:-ms-input-placeholder, textarea:-ms-input-placeholder { color: #8a867e; }
+      input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: rgb(149,126,82); } input:-moz-placeholder, textarea:-moz-placeholder { color: rgb(149,126,82); } input::-moz-placeholder, textarea::-moz-placeholder { color: rgb(149,126,82); } input:-ms-input-placeholder, textarea:-ms-input-placeholder { color: #8a867e; }
       input:disabled{
-      color: #b59e72 !important;
+      color: rgb(149,126,82) !important;
     }
       .input img {
         position: absolute;
@@ -487,22 +527,104 @@ export default class InsProductSearch extends Vue {
   background-color: rgba(0, 0, 0, 0.3);
   // border: 2px solid rgba(0, 0, 0, 0.3);
 }
+.sortBox{
+  position: relative;
+  z-index: 1;
+  .sortTitle{
+    width: 100%;
+    height: 3.4rem;
+    font-size: 1.2rem;
+    text-align: center;
+    // text-indent: 33%;
+    color: rgb(149,126,82) !important;
+    font-weight: 700;
+    font-family: 'SourceHanSerifCN-Bold';
+    // span{
+    //   display: inline-block;
+    //   width: 20px;
+    //   height: 20px;
+    //   background: url(/images/mobile/arrow-down-back.png) center center no-repeat;
+    //   background-size: 75%;
+    //   margin-left: 24%;
+    //   transition: all 0.3s;
+    //   vertical-align: middle;
+    //   &.rotate{
+    //     transform: rotate(180deg);
+    //   }
+    // }
+  }
+  .sortList{
+    width:100%;
+    // border:1px solid #ccc;
+    position: absolute;
+    left:0;
+    top:4rem;
+    box-sizing:border-box;
+    background: #fff;
+    border-radius:3px;
+    box-shadow: 0 0 5px #eeedec;
+    li{
+      text-align: center;
+      border-bottom: 1px solid #ebebeb;
+      font-size: 1.2rem;
+      &:last-of-type{
+        border-bottom: none;
+      }
+    }
+  }
+}
 .ENG{
   .selectBar ul > li {
     b{
       font-family: 'Domine-Bold';
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     .input{
       input{
         font-family: 'Domine-Bold';
-      font-size: 1.1rem;
+      font-size: 1rem !important;
+      color: rgb(149,126,82) !important;
+      }
+      input::-webkit-input-placeholder {
+        color: rgb(149,126,82);
+        opacity: 1;
+        font-size: 1rem !important;
+        background-color: transparent !important;
+      }
+      /* Mozilla Firefox 4 to 18 */
+      input:-moz-placeholder {
+        color: rgb(149,126,82);
+        opacity: 1;
+        font-size: 1rem !important;
+        background-color: transparent !important;
+      }
+      /* Mozilla Firefox 19+ */
+      input::-moz-placeholder {
+        color: rgb(149,126,82);
+        opacity: 1;
+        font-size: 1rem !important;
+        background-color: transparent !important;
+      }
+      /* Internet Explorer 10+ */
+      input:-ms-input-placeholder {
+        color: rgb(149,126,82);
+        font-size: 1rem !important;
+        opacity: 1;
+        background-color: transparent !important;
       }
     }
     .list > ul > li a{
       font-family: 'Domine-Bold';
-      font-size: 1.1rem;
+      font-size: 1rem !important;
+      color: rgb(149,126,82) !important;
     }
+  }
+  .sortBox .sortTitle{
+    font-size: 1rem !important;
+    font-family: 'Domine-Bold' !important;
+  }
+  .sortBox .sortList li{
+    font-size: 1rem !important;
   }
 }
 </style>

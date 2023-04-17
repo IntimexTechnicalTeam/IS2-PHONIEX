@@ -12,7 +12,7 @@
              class="select-delivery-one"
              >
                   <!-- 列表循环开始 -->
-                    <Card shadow="hover" class="OrderCard">
+                    <Card shadow="hover" class="OrderCard fix">
 
                       <ElCol :xs="18" :md="18" class="left-part">
                          <p>
@@ -28,7 +28,7 @@
                             <span>{{one.Address}}</span>
                           </p>
                       </ElCol>
-                      <ElCol :xs="3" :md="3" class="right-part">
+                      <ElCol :xs="6" :md="6" class="right-part">
                         <ElButton
                          type="warning"
                           round
@@ -544,7 +544,7 @@ export default class InsDeliveryAddress extends Vue {
 
 .select-delivery-one {
   box-sizing: border-box;
-  padding: 10px;
+  padding: 10px 0;
 
 }
 .OrderCard {
@@ -552,6 +552,7 @@ export default class InsDeliveryAddress extends Vue {
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
+  box-sizing: border-box;
 }
 
 .el-button.is-round {
@@ -561,7 +562,7 @@ export default class InsDeliveryAddress extends Vue {
 }
 .select-delivery-one .left-part {
   float: left;
-  width: 63%;
+  width: 72%;
   text-align: left;
 }
 

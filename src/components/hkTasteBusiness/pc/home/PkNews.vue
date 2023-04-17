@@ -304,5 +304,8 @@ export default class PkNews extends Vue {
       margin-bottom: 8px;
     }
   }
+  .tab .tab_top .tab_box .tab_top_center /deep/ p{
+      text-align: left;
+  }
 }
 </style>

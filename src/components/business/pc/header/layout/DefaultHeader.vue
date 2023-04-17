@@ -346,6 +346,8 @@ export default class DefaultHeader extends Vue {
         background-color: rgba(255, 255, 255, 0.95);
         top: 60px;
         padding: 30px 0;
+        padding-left: 70px;
+        box-sizing: border-box;
         // display: flex;
         // justify-content: center;
 

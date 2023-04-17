@@ -55,7 +55,8 @@
                 <div class="payment_main">
                   <div class="payment_title">{{$t('CheckOut.PayBy')}}</div>
                   <div class="payment_item" v-for="(pay, index) in payments" :key="index">
-                    <Radio v-model="payment" :label="pay" :disabled="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'"><img v-bind:src="pay.Img" /><span v-show="pay.Code==='FPS'">{{pay.Desc}}</span></Radio>
+                    <Radio v-model="payment" :label="pay" :disabled="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'"><img v-bind:src="pay.Img" /></Radio>
+                    <span class="payment_Code" v-show="pay.Code==='FPS' || pay.Code==='OfflinePay'">{{pay.Desc}}</span>
 
                     <p class="noRMBStripe" v-if="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'">{{$t('Message.noRMBStripe')}}</p>
                   </div>
@@ -137,7 +138,8 @@
                 <div class="payment_main">
                   <div class="payment_title">{{$t('CheckOut.PayBy')}}</div>
                   <div class="payment_item" v-for="(pay, index) in payments" :key="index">
-                    <Radio v-model="payment" :label="pay" :disabled="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'"><img v-bind:src="pay.Img" /><span v-show="pay.Code==='FPS'">{{pay.Desc}}</span></Radio>
+                    <Radio v-model="payment" :label="pay" :disabled="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'"><img v-bind:src="pay.Img" /></Radio>
+                    <span class="payment_Code" v-show="pay.Code==='FPS' || pay.Code==='OfflinePay'">{{pay.Desc}}</span>
 
                     <p class="noRMBStripe" v-if="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'">{{$t('Message.noRMBStripe')}}</p>
                   </div>
@@ -561,12 +563,19 @@ export default class InsCheckoutN extends Vue {
 .PcV{
   .payment_item{
     .el-radio__label{
-      display: flex;
+      // display: flex;
       align-items: center;
+
     }
+    span.payment_Code{
+        display: block;
+        color: #c62828;
+        font-size: 16px;
+        margin-left: 24px;
+      }
   }
 }
-
+.PcV{
 .coupon_warpper{
   .el-checkbox__input{
       display: none;
@@ -613,6 +622,8 @@ export default class InsCheckoutN extends Vue {
       }
   }
 }
+}
+
 </style>
 <style lang="less">
 .PcV .el-input__inner{
@@ -677,10 +688,10 @@ export default class InsCheckoutN extends Vue {
             }
             .payment_item{
                 padding: 10px 20px;
-                display: flex;
+                // display: flex;
                 align-items: center;
                 img{
-                    height: 60px;
+                    // height: 60px;
                 }
             }
         }
@@ -721,9 +732,12 @@ export default class InsCheckoutN extends Vue {
             justify-content: space-between;
             padding: 20px 0;
             align-items: center;
+            span{
+              font-size: 14px;
+            }
           }
           .discount,.price{
-            margin: 20px;
+            margin: 20px 10px;
             border-bottom: solid 1px rgba(0,0,0,.1);
           }
         }
@@ -741,7 +755,7 @@ export default class InsCheckoutN extends Vue {
             .payment_item{
                 padding: 10px 20px;
                 img{
-                    height: 60px;
+                    // height: 60px;
                 }
             }
         }
@@ -793,7 +807,7 @@ export default class InsCheckoutN extends Vue {
       right: 0;
       width: 50%;
       height: 75%;
-      background-color: black;
+      background-color: #b59e72;
       color: white;
       transform:translate(50%, -50%) rotateZ(45deg);
       .valid_content{
@@ -864,6 +878,8 @@ export default class InsCheckoutN extends Vue {
 .promotionCodeTips{
   text-align: right;
   color:#262626;
+  font-size: 14px;
+  margin-top: -10px;
 }
 .DefaultCurrency {
   float: right;
@@ -932,14 +948,14 @@ export default class InsCheckoutN extends Vue {
     height: 100px;
 }
 .shoppingcart_item_detail{
-    margin: 0 0 0 12px;
+    margin: 0 12px 0 12px;
 }
 .shoppingcart_item_detail > div{
 
 }
 .shoppingcart_item_name{
     line-height: 24px;
-    font-size: 18px;
+    font-size: 16px;
     width: 200px;
     // height: 2.5rem;
     // width: 10rem;
@@ -950,17 +966,17 @@ export default class InsCheckoutN extends Vue {
     font-size: 16px;
     padding: 6px 0;
     span{
-        font-size: 16px;
+        font-size: 14px;
     }
     div{
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 .shoppingcart_item_qty{
     display: flex;
     justify-content: space-between;
     .qty_count{
-        font-size: 16px;
+        font-size: 14px;
         line-height: 26px;
     }
     .Sabg{

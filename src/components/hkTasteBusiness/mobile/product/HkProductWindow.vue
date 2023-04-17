@@ -71,6 +71,9 @@ export default class InsProductWindow extends Vue {
     loadError (e) {
       e.target.src = '/static/Image/proddef.jpg';
     }
+    addCart (val) {
+      this.$router.push('/product/detail/' + val.Sku);
+    }
 }
 </script>
 <style lang="less">
@@ -144,6 +147,7 @@ export default class InsProductWindow extends Vue {
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
   }
 .in_pdWindow_item_description_w i{
     width: 20px;

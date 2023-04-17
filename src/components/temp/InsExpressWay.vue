@@ -748,8 +748,9 @@ export default class InsExpressWay extends Vue {
         li {
           height: unset;
           line-height: unset;
-          padding: 10px 20px;
+          padding: 10px 10px;
           white-space: normal;
+          font-size: 16px;
         }
       }
     }

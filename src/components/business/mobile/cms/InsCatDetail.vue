@@ -1,12 +1,13 @@
 <template>
   <div id="container" class="catDetail">
-    <div class="DetailTitle">
+    <div class="DetailTitle" v-if="cmsCategory.ImagePath">
       <img :src="cmsCategory.ImagePath">
+    </div>
+    <div class="DetailTitle" v-else>
       <div class="TitleBg">
         <div class="innerBoxText">{{cmsCategory.Name}}</div>
       </div>
     </div>
-
     <div class="catContent">
         <template v-if="cmsCategory.PageStyle === '0' || cmsCategory.PageStyle === '1'">
           <div v-html="cmsCategory.Content" class="layer"></div>
@@ -149,34 +150,28 @@ export default class insNews extends Vue {
 .catDetail {
   .DetailTitle{
     width: 100%;
-    display: flex;
-    flex-wrap:wrap;
-    position: relative;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    // flex-wrap:wrap;
+    // position: relative;
+    // align-items: center;
+    // justify-content: center;
     img{
       width: 100%;
     }
     .TitleBg{
-      width: 75%;
-      border: 1px solid #ffffff;
-      height: 4.5rem;
-      line-height: 4.5rem;
-      margin: 0 auto;
-      padding: 10px;
-      margin-bottom: 20px;
-      top: 50%;
-      position: absolute;
-      transform: translateY(-50%);
+        width: 20rem;
+        height: 50px;
+        background: url(/images/pc/index_66.png) no-repeat center center;
+        background-size: contain;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 4rem;
       .innerBoxText{
-        background:#ffffff;
-        color: #333333;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        font-weight: 700;
-        font-family: 'Arial';
+
+        font-size: 1.6rem;
+        font-family: 'SourceHanSerifCN-Medium';
+        color: #b59e72;
+        line-height: 50px;
       }
     }
   }

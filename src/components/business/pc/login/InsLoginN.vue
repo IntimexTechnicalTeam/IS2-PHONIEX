@@ -39,7 +39,7 @@
                     </div>
                 </InsForm>
               </div>
-              <InsButton :nama="$t('Login.Signin')" @click="login" style="margin-top: 12.5rem;"/>
+              <InsButton :nama="$t('Login.Signin')" @click="login" style="margin-top: 203px;"/>
           </div>
           <div class="register">
               <div>
@@ -60,16 +60,16 @@
                 <InsInput2 :placeholder="$t('Register.UserEmail')" v-model="registerForm.email" width="100%" type="email" />
                 </InsForm>
                 <!-- <div></div> -->
-                <CheckboxGroup v-model="terms" style="margin: 10px 0 0 0">
-                    <Checkbox name="type"></Checkbox><span><a href="javasript:;" @click = "toURL('/CMS/content/20298')" target="_blank" style="font-size: 14px;padding-left: 14px;color: #666666;
+                <CheckboxGroup v-model="terms" style="margin: 15px 0 0 0">
+                    <Checkbox name="type"></Checkbox><span><a href="/CMS/content/20440" target="_blank" style="font-size: 14px;padding-left: 14px;color: #666666;
     text-decoration: none;">{{$t('Register.RegisterAgree')}}</a></span>
                 </CheckboxGroup>
-                <CheckboxGroup v-model="registerForm.OptOutReceiving" style="margin: 10px 0 20px 0">
+                <CheckboxGroup v-model="registerForm.OptOutReceiving" style="margin: 5px 0 10px 0">
                     <Checkbox name="type"></Checkbox><span><a href="javascript:;" style="font-size: 14px;padding-left: 14px;color: #666666;
     text-decoration: none;">{{$t('Register.promotionalinformation')}}</a></span>
                 </CheckboxGroup>
               </div>
-              <InsButton :nama="$t('Register.Createanaccount')" @click="register"  style="margin-top: .4rem;"/>
+              <InsButton :nama="$t('Register.Createanaccount')" @click="register" />
           </div>
       </div>
   </div>
@@ -250,7 +250,7 @@ export default class InsLoginN extends Vue {
 </style>
 <style lang="less" scoped>
 .insLogin_warrper{
-    width: 1200px;
+    width: 1150px;
     margin: 0rem auto;
     padding-bottom: 15px;
     .insLogin_title{
@@ -328,9 +328,18 @@ export default class InsLoginN extends Vue {
           p{
             font-size: 24px;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 0;
           }
         }
+        /deep/ .input_outer{
+          padding-top: 20px;
+        }
+        .error{
+          font-size: 12px;
+        }
+    }
+    /deep/ .in_btn{
+      font-size: 20px;
     }
 }
 </style>

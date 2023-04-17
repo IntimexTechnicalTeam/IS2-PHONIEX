@@ -37,7 +37,7 @@
       </div>
       <!-- 表单信息 -->
         <div class="FormMain">
-          <p class="FormTitle">{{FormTitle}}</p>
+          <!-- <p class="FormTitle">{{FormTitle}}</p> -->
           <div v-html="htmlString" class="to_vertical" id="content"></div>
           <div id="preview" style="display:none;"></div>
         </div>
@@ -391,11 +391,11 @@ export default class InsCmsContent extends Vue {
   }
 }
 .MobileContact .FormMain{
-  width:90%;
+  width:100%;
   margin:0 auto;
-  padding-bottom: 3rem;
+  padding-bottom: 0;
   position: relative;
-  padding-top: 3rem;
+  padding-top: 2rem;
   .FormTitle{
     font-size: 2.5rem;
     margin-top: 2rem;
@@ -412,6 +412,7 @@ export default class InsCmsContent extends Vue {
     }
   }
   .form-group{
+    margin-bottom: 1.5rem;
     .fieldset {
       border: none;
     }
@@ -419,45 +420,47 @@ export default class InsCmsContent extends Vue {
       background: #fff;
       background-size: 100% 100%;
       display: inline-block;
-      height: 3.5rem;
-      width: 40%;
-      text-align: center;
-      line-height: 3.5rem;
+      // height: 3.5rem;
+      // width: 40%;
+      text-align: left;
+      // line-height: 3.5rem;
       font-size: 1.2rem;
       margin-bottom: .5rem;
-      border:1px solid #808080;
-      border-radius: 2px;
+      // border:1px solid #808080;
+      border-radius: 3px;
+      color: #808080;
+      font-weight: 400;
     }
     input[type="text"],input[type="email"]{
-      border:1px solid #808080;
+      border:1px solid #b59e72;
       height: 3.5rem;
       line-height: 3.5rem;
-      width: 70%;
+      width: 100%;
       box-sizing: border-box;
-      border-radius: 2px;
-      margin-bottom: .5rem;
+      border-radius: 3px;
       text-indent: 1rem;
       outline: none;
       font-size: 1.4rem;
     }
     textarea{
-      border:1px solid #808080;
+      border:1px solid #b59e72;
       height: 10rem;
       width: 100%;
       box-sizing: border-box;
-      border-radius: 2px;
-      margin-bottom: .5rem;
+      border-radius: 3px;
       outline: none;
       font-size: 1.4rem;
+      text-indent: 1rem;
+      padding: 1rem 0;
     }
     p[name="error"]{
       color:red;
       margin-bottom:.5rem;
     }
     .btn-default{
-      width: 40%;
-      float: right;
-      background: #333333;
+      width: 100%;
+      // float: right;
+      background: #b59e72;
       height: 3.5rem;
       line-height: 3.5rem;
       color:#fff;
@@ -465,8 +468,9 @@ export default class InsCmsContent extends Vue {
       border:none;
       margin-top: 1rem;
       font-size: 1.4rem;
-      margin-bottom: 5rem;
-      border-radius: 2px;
+      margin-bottom: 0;
+      border-radius: 3px;
+      font-family: 'SourceHanSerifCN-Bold';
     }
   }
 }
@@ -480,11 +484,11 @@ export default class InsCmsContent extends Vue {
 }
 .DetailTitle{
   width: 100%;
-  display: flex;
-  flex-wrap:wrap;
-  position: relative;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  // flex-wrap:wrap;
+  // position: relative;
+  // align-items: center;
+  // justify-content: center;
   img{
     width: 100%;
   }
@@ -502,10 +506,10 @@ export default class InsCmsContent extends Vue {
       background-size: contain;
       margin: 0 auto;
       text-align: center;
-      margin-top: 14px;
+      margin-top: 4rem;
     .innerBoxText{
 
-      font-size: 20px;
+      font-size: 1.6rem;
     font-family: 'SourceHanSerifCN-Medium';
     color: #b59e72;
     line-height: 50px;
@@ -655,7 +659,7 @@ export default class InsCmsContent extends Vue {
 }
 .CmsContent{
   position: relative;
-    width: 90%;
+    width: 94%;
     margin: 0 auto;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -667,6 +671,9 @@ export default class InsCmsContent extends Vue {
     img{
       width: 100%;
     }
+  }
+  /deep/ table{
+    width: 100%;
   }
   /deep/ table.about_table{
         width: 100%;
@@ -729,6 +736,23 @@ export default class InsCmsContent extends Vue {
           }
         }
       }
+      /deep/ .table_payment{
+        width: 100%;
+        tr{
+          td{
+            padding: 3px;
+            display: table-cell;
+            width: 25%;
+            img{
+              border: 1px solid #e6e6e6;
+              border-radius: 3px;
+              display: block;
+              box-sizing: border-box;
+              width: 100%;
+            }
+          }
+        }
+      }
 }
 .CmsMap
 {
@@ -773,7 +797,7 @@ export default class InsCmsContent extends Vue {
       font-size: 1.6rem;
     }
     p {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         color: #4e4e4e;
         margin-bottom: 1rem;
         text-align: center;
@@ -794,6 +818,9 @@ export default class InsCmsContent extends Vue {
   }
   .CmsContent/deep/ table.about_table tr td{
     line-height: 24px;
+  }
+  .FormMain /deep/ .form-group .btn-default{
+    font-family: 'Domine-Bold' !important;
   }
 }
 </style>

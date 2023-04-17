@@ -79,6 +79,7 @@ export default class App extends Vue {
 }
 .el-message {
   top: 5rem !important;
+  z-index: 99999 !important;
 }
 .el-scrollbar{
   >.el-scrollbar__bar{

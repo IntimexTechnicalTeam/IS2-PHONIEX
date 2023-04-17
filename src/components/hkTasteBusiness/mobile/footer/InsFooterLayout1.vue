@@ -21,8 +21,8 @@
               >
                 <a
                   href="javascript:;"
-                  v-if="item.Type === -1"
-                  @click="toUrl(item.Url)"
+                  v-if="item.Type === 0"
+                  @click="toUrl(item)"
                 >
                   {{ item.Name }}
                 </a>
@@ -70,22 +70,34 @@ export default class InsFooter extends Vue {
   closeSlideMenu (n) {
     this.$store.dispatch('isShowMenu', false);
   }
-  goToTop () {
-    let sTop = document.documentElement.scrollTop;
-    let times = setInterval(() => {
-      sTop -= 50;
-      if (sTop <= 0) {
-        document.documentElement.scrollTop = 0;
-        clearInterval(times);
-      } else {
-        document.documentElement.scrollTop = sTop;
-      }
-    }, 1);
+  // goToTop () {
+  //   let sTop = document.documentElement.scrollTop;
+  //   let times = setInterval(() => {
+  //     sTop -= 50;
+  //     if (sTop <= 0) {
+  //       document.documentElement.scrollTop = 0;
+  //       clearInterval(times);
+  //     } else {
+  //       document.documentElement.scrollTop = sTop;
+  //     }
+  //   }, 1);
+  // }
+  toUrl (n) {
+    console.log(n, 'toUrl');
+    if (n.Type < 0) {
+      return;
+    }
+
+    if (!n.IsNewWin && n.Url) {
+      window.location.href = n.Url;
+    } else if (n.IsNewWin && n.Url) {
+      window.open(n.Url);
+    }
   }
   To (n) {
     let url = '';
-    if (n.Type === 0) {
-      url = n.Url;
+    if (n.Type === -1) {
+      url = '';
     } else if (n.Type === 1 && n.IsAnchor === false) {
       url = '/cms/catDetail/' + n.Value.Id;
     } else if (n.Type === 1 && n.IsAnchor === true) {
@@ -191,7 +203,7 @@ export default class InsFooter extends Vue {
     .footerNav{
       width: 100%;
       margin: 0 auto;
-      // margin-top: 2rem;
+      margin-top: 1rem;
       margin-bottom: 2rem;
       position: relative;
       z-index: 10;

@@ -134,7 +134,7 @@
      </div>
     <div style="clear:both;"></div>
      <div class="TimeRangMain" v-show="IsSelfDefineDeliveryDate">
-      <div class="TimeRangItem">
+      <div class="TimeRangItem fix">
           <p class="date">{{$t('Message.DeliveryDate')}}</p>
           <div class="inputMain">
             <el-date-picker
@@ -893,11 +893,13 @@ export default class InsExpressWay extends Vue {
   padding: 1rem;
   .TimeRangItem{
     width: 100%;
-    display:flex;
-    padding-top: 30px;
+    // display:flex;
+    padding-bottom: 30px;
     .date,.time,.note{
       width: 120px;
       font-size: 16px;
+      padding-top: 10px;
+      float: left;
     }
     .inputMain{
       display: flex;
@@ -910,6 +912,8 @@ export default class InsExpressWay extends Vue {
         border: 1px solid #DCDFE6;
         color: #606266;
         outline: 0;
+        padding: 1rem;
+        box-sizing: border-box;
       }
       select{
         width: 100%;

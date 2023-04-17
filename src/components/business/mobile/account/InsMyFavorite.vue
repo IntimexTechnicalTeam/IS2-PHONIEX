@@ -225,6 +225,7 @@ export default class InsMyFavorite extends Vue {
     background-color: @base_color!important;
     border-color: @base_color!important;
     color: #fff;
+    width: 100%;
 }
 .el-button + .el-button {
   margin-left: 0px;

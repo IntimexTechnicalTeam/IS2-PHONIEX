@@ -108,7 +108,7 @@ export default class InsAdvancedSearch extends Vue {
 
       p.category {
         width: 100%;
-        font-size:2rem;
+        font-size:1.6rem;
         font-family: 'SourceHanSerifCN-Bold';
         color: #333333;
         background-color: #FFF;
@@ -194,7 +194,7 @@ export default class InsAdvancedSearch extends Vue {
 
             label {
               border: 1px solid #f2f1f0;
-              font-size: 1.6rem;
+              font-size: 1.4rem;
               color: #666666;
               width: 100%;
               padding-left: 1.5rem;

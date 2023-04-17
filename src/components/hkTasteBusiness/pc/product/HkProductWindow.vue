@@ -264,14 +264,23 @@ export default class InsProductWindow extends Vue {
     float: right;
     width: 100px;
     height: 35px;
-    background-color: #b59e72;
+    background-color: #fff;
+    border: 1px solid #b59e72;
     border-radius: 3px;
     text-align: center;
+    transition: all 0.3s;
     span{
       font-size: 18px;
       font-family: 'SourceHanSerifCN-Bold';
-      color: #fff;
+      color: #b59e72;
       line-height: 35px;
+    }
+    &:hover{
+      background-color: #b59e72;
+      border: 1px solid #b59e72;
+      span{
+        color: #fff;
+      }
     }
   }
 }

@@ -206,7 +206,7 @@ export default class InsMyFavorite extends Vue {
 }
 .OrderBtn {
   width: 100%;
-  margin-bottom: 20px;
+  margin: 10px 0;
 }
 .green-btn {
     background-color: @base_color;

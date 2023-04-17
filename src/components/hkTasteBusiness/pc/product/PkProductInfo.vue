@@ -160,6 +160,8 @@ export default class PkProductInfo extends Vue {
       color: #808080;
       line-height: 30px;
       font-size: 16px;
+      text-align: justify;
+      word-break: break-word;
     }
   }
   /deep/ .el-rate{

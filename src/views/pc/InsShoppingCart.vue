@@ -377,7 +377,7 @@ export default class InsShoppingcart extends Vue {
 }
 
 .merchant-one-calc {
-  width: 140px;
+  width: 145px;
   margin-left: 0;
   float: left;
   text-align: center;
@@ -407,7 +407,7 @@ export default class InsShoppingcart extends Vue {
 
 .merchant-total-price {
   float: left;
-  width: 446px;
+  width: 435px;
   text-align: center;
   display: flex;
   align-items: center;

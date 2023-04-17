@@ -3,7 +3,7 @@
   <!-- 联络我们页面 -->
     <div class="Cmsbg" v-if="NewcateId=='40125'">
       <transition name="slide">
-        <div key="1" v-if="!waiting" style="display:flex;">
+        <div key="1" v-if="!waiting">
            <div class="DetailTitle" v-if="ImgList">
             <img :src="ImgList" v-if="ImgList">
 
@@ -54,7 +54,7 @@
     <!-- 其他页面 -->
     <div class="CmsNormal" v-if="NewcateId!='40125'">
       <transition name="slide">
-        <div key="1" v-if="!waiting" style="display:flex;">
+        <div key="1" v-if="!waiting">
           <div class="DetailTitle" v-if="OtherPageImg">
             <img :src="OtherPageImg" v-if="OtherPageImg">
           </div>
@@ -348,10 +348,25 @@ getmap () {
     color:#333333;
   }
   #preview{
-    width: 80%;
-    float:right;
+    width: 100%;
+    // float:right;
+    .title{
+      font-size: 24px;
+      color:#b59e72;
+      margin-bottom: 10px;
+    }
+    .question{
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: #333;
+    }
     .anwer{
       margin-bottom: 20px;
+      p{
+        word-break: break-word;
+        font-size: 16px;
+        color: #5e5e5e;
+      }
     }
     .back{
       background: #ccc;
@@ -362,12 +377,13 @@ getmap () {
       margin-top: 30px;
     }
     .confirm{
-      background: #333;
+      background: #b59e72;
       color:#FFF;
       padding:10px 20px 10px 20px;
       border:none;
       margin-top: 30px;
       margin-bottom: 30px;
+      margin-right: 30px;
     }
   }
   .to_vertical{
@@ -382,68 +398,74 @@ getmap () {
     }
   }
   .btn-default{
-      width: 20%;
-      float: right;
-      background: #666666;
-      height: 3.5rem;
-      line-height: 3.5rem;
+      width: 100%;
+      // float: right;
+      background: #b59e72;
+      height: 43px;
+      line-height: 43px;
       color:#fff;
       background-size: 100%;
       border:none;
-      margin-top: 1rem;
-      font-size: 1.4rem;
-      margin-bottom: 5rem;
-      border-radius: 2px;
+      // margin-top: 20px;
+      font-size: 22px;
+      // margin-bottom: 40px;
+      border-radius: 3px;
+      font-family: 'SourceHanSerifCN-Bold';
   }
   #Anwers{
     position: relative;
   .form-group{
-    width: 50%;
-    display: inline-block;
-    &:nth-child(3){
-      position: absolute;
-      width: 50%;
-      right: 0px;
-      top:0px;
-    }
+    width: 100%;
+    display: block;
+    margin-bottom: 25px;
+    // &:nth-child(3){
+    //   position: absolute;
+    //   width: 100%;
+    //   right: 0px;
+    //   top:0px;
+    // }
     .fieldset{
       border:none;
       padding: 0px;
+      margin: 0;
     }
     h4{
       background: #fff;
       background-size: 100% 100%;
       display: inline-block;
-      height: 3.5rem;
-      width: 40%;
-      text-align: center;
-      line-height: 3.5rem;
-      font-size: 1.2rem;
-      margin-bottom: .5rem;
-      border:1px solid #808080;
-      border-radius: 2px;
+      // height: 30px;
+      // width: 40%;
+      text-align: left;
+      // line-height: 3.5rem;
+      font-size: 20px;
+      margin-bottom: 10px;
+      // border:1px solid #808080;
+      // border-radius: 2px;
+      color: #808080;
+      font-weight: 400;
     }
     input[type="text"],input[type="email"]{
-      border:1px solid #808080;
-      height: 3.5rem;
-      line-height: 3.5rem;
-      width: 70%;
-      box-sizing: border-box;
-      border-radius: 2px;
-      margin-bottom: .5rem;
-      text-indent: 1rem;
-      outline: none;
-      font-size: 1.4rem;
-    }
-    textarea{
-      border:1px solid #808080;
-      height: 12rem;
+      border:1px solid #b59e72;
+      height: 43px;
+      line-height: 43px;
       width: 100%;
       box-sizing: border-box;
-      border-radius: 2px;
-      margin-bottom: .5rem;
+      border-radius: 3px;
+
+      text-indent: 10px;
       outline: none;
-      font-size: 1.4rem;
+      font-size: 18px;
+    }
+    textarea{
+      border:1px solid #b59e72;
+      height: 148px;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 3px;
+      outline: none;
+      font-size: 18px;
+      // text-indent: 10px;
+      padding: 10px;
     }
     p[name="error"]{
       color:red;
@@ -512,6 +534,9 @@ getmap () {
       width:50%;
     }
   }
+  table{
+    width: 100%;
+  }
   table.about_table{
         width: 980px;
         margin: 0 auto;
@@ -576,6 +601,23 @@ getmap () {
           }
         }
       }
+      .table_payment{
+        width: 100%;
+        tr{
+          td{
+            padding: 10px;
+            display: table-cell;
+            width: 14.28%;
+            img{
+              border: 1px solid #e6e6e6;
+              border-radius: 3px;
+              display: block;
+              box-sizing: border-box;
+              width: 100%;
+            }
+          }
+        }
+      }
 }
 .ENG.PcContact{
   .CmsContent table.about_table tr td{
@@ -618,7 +660,9 @@ getmap () {
         }
       }
     }
-
+  .FormMain /deep/ .form-group .btn-default{
+    font-family: 'Domine-Bold' !important;
+  }
 }
 iframe{
   border: none;
@@ -633,36 +677,28 @@ iframe{
 }
 .DetailTitle{
   width: 100%;
-  display: flex;
-  flex-wrap:wrap;
-  position: relative;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  // flex-wrap:wrap;
+  // position: relative;
+  // align-items: center;
+  // justify-content: center;
   img{
     width: 100%;
   }
   .TitleBg{
-    // width: 500px;
-    // border: 1px solid #ffffff;
-    // height: 70px;
-    // line-height: 70px;
-    // margin: 0 auto;
-    // padding: 10px;
-    // margin-bottom: 20px;
-    // top: 50%;
-    // position: absolute;
-    // transform: translateY(-50%);
-    .innerBoxText{
-      // background:#ffffff;
-      color: #b59e72;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      font-weight: 700;
-      // font-family: 'Arial';
+      width: 254px;
+      height: 50px;
+      background: url(/images/pc/index_66.png) no-repeat center center;
+      margin: 0 auto;
+      text-align: center;
+      margin: 50px auto;
+      .innerBoxText{
+        font-size: 20px;
+        font-family: 'SourceHanSerifCN-Medium';
+        color: #b59e72;
+        line-height: 50px;
+      }
     }
-  }
 }
 
 .CmsNormal{

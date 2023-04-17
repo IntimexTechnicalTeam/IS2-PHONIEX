@@ -264,7 +264,7 @@ export default class InsShoppingcart extends Vue {
     border-radius: 3px;
 }
 .shoppingcart_item_detail{
-    margin: 0 0 0 1rem;
+    margin: 0 0 0 0.5rem;
     // margin-right: 3.5rem;
     display: flex;
     width: 100%;

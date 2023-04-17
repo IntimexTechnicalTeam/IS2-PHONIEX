@@ -429,7 +429,7 @@ export default class InsDeliveryAddress extends Vue {
   white-space: unset;
 }
 .MembercenterMobile .MemberInfoMain {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     margin-top: 5rem;
     margin-bottom: 5rem;
@@ -471,18 +471,19 @@ export default class InsDeliveryAddress extends Vue {
       border-radius: 3px;
 }
 .MembercenterMobile .MemberInfoMain .el-radio__input.is-checked .el-radio__inner{
-    border-color: #333333;
-    background: #333333;
+    border-color: #b59e72;
+    background: #fff;
 }
 .MembercenterMobile .MemberInfoMain .el-radio__input.is-checked+.el-radio__label{
   color: #606266;
 }
 .MembercenterMobile .MemberInfoMain .el-select{
-  width: 75%!important;
+  width: 100%!important;
 }
 .MembercenterMobile .MemberInfoMain .el-select >.el-input{
   width: 100%!important;
-  border: 1px solid #000;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
 }
 .MembercenterMobile .MemberInfoMain .el-select >.el-input .el-input__inner{
   border: 0px!important;
@@ -525,7 +526,7 @@ export default class InsDeliveryAddress extends Vue {
 <style  lang="less" scoped>
 /*我的最爱*/
 #main-content {
-  width:90% !important;
+  width:96% !important;
   margin: 0 auto;
   margin-top: 30px;
 }
@@ -596,13 +597,14 @@ export default class InsDeliveryAddress extends Vue {
 
 .select-delivery-one {
   box-sizing: border-box;
-  padding: 10px;
+  padding: 0;
 
 }
 .delivery-address .OrderCard {
     display: inline-block;
     width: 100%;
     padding-top: 20px;
+    box-sizing: border-box;
 }
 
 .el-button.is-round {

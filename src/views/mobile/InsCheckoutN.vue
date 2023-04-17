@@ -78,7 +78,8 @@
                 <div class="payment_main">
                   <div class="payment_title">{{$t('CheckOut.PayBy')}}</div>
                   <div class="payment_item" v-for="(pay, index) in payments" :key="index">
-                    <Radio v-model="payment" :label="pay" :disabled="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'"><img v-bind:src="pay.Img" /><span v-show="pay.Code==='FPS'">{{pay.Desc}}</span></Radio>
+                    <Radio v-model="payment" :label="pay" :disabled="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'"><img v-bind:src="pay.Img" /></Radio>
+                    <span class="payment_Code" v-show="pay.Code==='FPS' || pay.Code==='OfflinePay'">{{pay.Desc}}</span>
 
                     <p class="noRMBStripe" v-if="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'">{{$t('Message.noRMBStripe')}}</p>
                   </div>
@@ -135,7 +136,8 @@
                 <div class="payment_main">
                   <div class="payment_title">{{$t('CheckOut.PayBy')}}</div>
                   <div class="payment_item" v-for="(pay, index) in payments" :key="index">
-                    <Radio v-model="payment" :label="pay" :disabled="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'"><img v-bind:src="pay.Img" /><span v-show="pay.Code==='FPS'">{{pay.Desc}}</span></Radio>
+                    <Radio v-model="payment" :label="pay" :disabled="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'"><img v-bind:src="pay.Img" /></Radio>
+                    <span class="payment_Code" v-show="pay.Code==='FPS' || pay.Code==='OfflinePay'">{{pay.Desc}}</span>
 
                     <p class="noRMBStripe" v-if="Shoppcart.Currency.Code === 'RMB' && pay.Code === 'Stripe'">{{$t('Message.noRMBStripe')}}</p>
                   </div>
@@ -546,8 +548,16 @@ export default class InsCheckoutN extends Vue {
 .mobileV{
   .payment_item{
     .el-radio__label{
-      display: flex;
+      // display: flex;
       align-items: center;
+
+    }
+    span.payment_Code{
+      display: block;
+      color: #c62828;
+      font-size: 1.2rem;
+      margin-left: 2rem;
+      word-break: break-word;
     }
   }
 }
@@ -557,7 +567,8 @@ export default class InsCheckoutN extends Vue {
     align-items: center;
   }
 }
-.coupon_warpper{
+.mobileV{
+  .coupon_warpper{
   .el-checkbox__input{
       display: none;
     }
@@ -577,10 +588,12 @@ export default class InsCheckoutN extends Vue {
       .coupon_title{
         font-size: 1.4rem;
         // background-color: #d4794d;
+        background-color: @base_color;
         display: inline-block;
         // padding: 0 2rem;
-        color: #666;
+        color: #fff;
         margin-bottom: 1rem;
+        padding: 0.5rem 1rem;
       }
     }
   }
@@ -594,10 +607,13 @@ export default class InsCheckoutN extends Vue {
         border-radius: 0.5rem;
       }
       .coupon_title{
-        color: #d9b672 !important;
+        background-color: #d9b672 !important;
       }
       .coupon_is_valid{
         background-color: #d9b672 !important;
+      }
+      .coupon_item{
+        border: none !important;
       }
       .coupon_remark, .coupon_expiryDate{
         color: #d9b672 !important;
@@ -611,7 +627,7 @@ export default class InsCheckoutN extends Vue {
   .is-disabled {
     // border: 1px solid #e5e5e5 !important;
     .coupon_title {
-      // background-color: #c0c4cc !important;
+      background-color: #c0c4cc !important;
     }
     .coupon_is_valid {
       background-color: #c0c4cc !important;
@@ -624,6 +640,8 @@ export default class InsCheckoutN extends Vue {
     }
   }
 }
+}
+
 .btnStyle span{
     font-size: 1.4rem;
   }
@@ -715,7 +733,7 @@ export default class InsCheckoutN extends Vue {
               vertical-align: middle;
           }
           .payment_item_img img{
-              height: 40px;
+              // height: 40px;
           }
       }
     }
@@ -777,11 +795,11 @@ export default class InsCheckoutN extends Vue {
               }
             }
             .payment_item{
-                padding: 10px 20px;
+                padding: 10px 0;
                 // display: flex;
                 // align-items: flex-start;
                 img{
-                    height:40px;
+                    // height:40px;
                 }
             }
         }
@@ -816,26 +834,28 @@ export default class InsCheckoutN extends Vue {
   .coupon_item{
     .coupon_expiryDate,.coupon_remark,.coupon_title{
       font-size: 1.4rem;
-      line-height: 4rem;
+      // line-height: 4rem;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
     }
     position: relative;
     padding: 1.4rem 1rem;
     // border: 1px solid rgba(0,0,0,.1);
-    border-radius: .5rem;
+    // border-radius: .5rem;
     overflow: hidden;
     .coupon_is_valid{
       position: absolute;
       top: 0;
       right: 0;
       width: 50%;
-      height: 80%;
-      background-color: black;
+      height: 70%;
+      background-color: #b59e72;
       color: white;
       transform:translate(50%, -50%) rotateZ(45deg);
       .valid_content{
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         position:absolute;
-        top: 85%;
+        top: 86%;
         left: 50%;
         transform: translate(-50%,-50%);
       }

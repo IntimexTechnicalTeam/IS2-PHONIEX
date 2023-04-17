@@ -60,7 +60,7 @@ export default class InsLoginFlow extends Vue {
       background-color: aliceblue;
       max-width: 100%;
       min-width: 500px;
-      padding-bottom: 15px;
+      padding-bottom: 0;
       .login-register-title{
         display: block;
         padding: 48px 12px;

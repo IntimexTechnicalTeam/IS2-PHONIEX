@@ -287,5 +287,8 @@ export default class PkNews extends Vue {
       font-size: 1rem;
     }
   }
+  .tab .tab_top .tab_box .tab_top_center /deep/ p{
+      text-align: left;
+  }
 }
 </style>

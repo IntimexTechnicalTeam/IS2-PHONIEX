@@ -39,12 +39,12 @@
             <th></th>
           </tr>
           <tr v-for="(one, index) in shopCart.Items" :key="index">
-            <td class="window-cart-pic"  style="display: block;text-align: center;">
+            <td class="window-cart-pic">
               <a href="/">
                 <img :src="one.Product.Img_M" />
               </a>
-              <p style="font-size:16px;">{{ one.Product.Name }}</p>
-              <p v-if="one.AttrName1" class="attrList">
+              <p style="font-size:14px;">{{ one.Product.Name }}</p>
+              <!-- <p v-if="one.AttrName1" class="attrList">
                 {{ one.AttrTypeName1 }}：{{ one.AttrName1 }}
               </p>
               <p v-if="one.AttrName2" class="attrList">
@@ -52,7 +52,7 @@
               </p>
               <p v-if="one.AttrName3" class="attrList">
                 {{ one.AttrTypeName3 }}：{{ one.AttrName3 }}
-              </p>
+              </p> -->
             </td>
             <td width="60" class="window-cart-num">{{ one.Qty }}</td>
             <td width="120" class="window-cart-price">
@@ -190,10 +190,10 @@ export default class InsShoppingCart extends Vue {
   right: 0;
   top: 13px;
   width: 60px;
-  height: 90px;
+  height: 88px;
   background-color: #f0f0f0;
   text-align: center;
-  line-height: 90px;
+  line-height: 88px;
   cursor: pointer;
 }
 .cart-close span {
@@ -273,7 +273,7 @@ export default class InsShoppingCart extends Vue {
   background-color: #f6f6f6;
   overflow: auto;
   overflow-x: hidden;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   border: 1px solid #eee;
   transition: all 1s;
 }
@@ -299,9 +299,9 @@ export default class InsShoppingCart extends Vue {
   display: inline-block;
   color: #191919;
   vertical-align: middle;
-  padding-top: 40px;
+  padding-top: 20px;
   font-weight: bold;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 .cart-window-content table {
@@ -331,7 +331,7 @@ export default class InsShoppingCart extends Vue {
 .cart-window-content table td,
 .cart-window-content table th {
   box-sizing: border-box;
-  padding: 10px;
+  padding: 5px;
   font-size: 12px;
   text-align: center;
 }
@@ -375,15 +375,25 @@ export default class InsShoppingCart extends Vue {
 .window-cart-price {
   color: #dc1010;
 }
-
+.window-cart-pic{
+  display: block;
+  align-items: center;
+}
 .window-cart-pic img {
   border: 1px solid #f0f0f0;
   width: 68px;
+  box-sizing: border-box;
 }
-
+.window-cart-pic p{
+  overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+}
 .cartSubtotal {
   text-align: right;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 16px;
   color: #666;
   line-height: 20px;
@@ -398,7 +408,7 @@ export default class InsShoppingCart extends Vue {
 }
 
 .goToCart {
-  margin-top: 30px;
+  margin-top: 15px;
 }
 .goToCart a {
   display: inline-block;
@@ -412,10 +422,11 @@ export default class InsShoppingCart extends Vue {
   border: @base_color 1px solid;
   text-decoration: none;
   background: @base_color;
+  box-sizing: border-box;
 }
 .cart-window-content {
   .scrollbar{
-      max-height: 440px;
+      max-height: 362px;
       overflow: auto;
       overflow-x: hidden;
     }
