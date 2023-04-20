@@ -305,7 +305,12 @@ export default class InsExpressWay extends Vue {
         this.Express = result.ExpressAndOutlets;
         this.ChosenExpress = result.ExpressAndOutlets.length > 0 ? result.ExpressAndOutlets[0] : new ExpressAndOutlets();
         this.IsSelfDefineDeliveryDate = this.ChosenExpress.IsSelfDefineDeliveryDate;
-        this.ChosenExpressPoint = this.ChosenExpress.ExpressPointList.length ? this.ChosenExpress.ExpressPointList[0] : new ExpressPoint();
+        // this.ChosenExpressPoint = this.ChosenExpress.ExpressPointList.length ? this.ChosenExpress.ExpressPointList[0] : new ExpressPoint();
+        if (this.ChosenExpress.ExpressCompanyId !== 'P' && this.ChosenExpress.IsExpressPoint) {
+          this.ChosenExpressPoint = this.ChosenExpress.ExpressPointList.length ? this.ChosenExpress.ExpressPointList[0] : new ExpressPoint();
+        } else {
+          this.ChosenExpressPoint = new ExpressPoint();
+        }
       });
       if (!this.$store.state.shopCart) this.$store.dispatch('setShopCart', this.$Api.shoppingCart.getShoppingCart());
       let shopcart = this.$store.state.shopCart.then((result) => {

@@ -44,6 +44,13 @@ export class CmsApi extends WSAPI {
   // getContentByDevice () {
   //   return this.instance.get(this.apiPath + '/cms/GetContentByDevice', {});
   // }
+
+  getFromContentByCatId (catId: string, page:number, pageSize:number, IsMobile: boolean, sortName:string, sortOrder:string, OnTopList: []) {
+    return this.instance.post(this.apiPath + '/cms/GetFromContentByCatId',
+      { catId: catId, page: page, pageSize: pageSize, IsMobile: IsMobile, sortName: sortName, sortOrder: sortOrder, OnTopList: OnTopList }).then((result) => {
+      return result.data;
+    });
+  }
   getCatOtherContent (cond: any) {
     return this.instance.post(this.apiPath + '/cms/GetCategoryRelateContent',
       cond).then((result) => {

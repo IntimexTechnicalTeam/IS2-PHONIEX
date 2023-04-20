@@ -39,7 +39,7 @@ export default class PkLiveBox extends Vue {
     });
   }
   gettopContactUs () {
-    this.$Api.cms.getContentByDevice({ Key: 'ContactUs', IsMobile: true }).then(result => {
+    this.$Api.cms.getContentByDevice({ Key: 'ContactUshome', IsMobile: true }).then(result => {
       this.UsContent = result.CMS;
     });
   }

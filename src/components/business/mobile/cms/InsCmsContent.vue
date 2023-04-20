@@ -1,7 +1,7 @@
 <template>
   <div id="container" class="MobileContact" :class="{'ENG' : $Storage.get('locale') === 'E'}">
     <!-- 联络我们页面 -->
-    <div class="Cmsbg" v-if="NewcateId=='40125'">
+    <div class="Cmsbg" v-if="content.Key=='ContactUs'">
       <transition name="slide">
         <div key="1" v-if="!waiting" style="display:flex;">
           <div class="DetailTitle" v-if="ImgList">
@@ -47,7 +47,7 @@
       </div>
     </div>
     <!-- 其他页面 -->
-    <div class="CmsNormal" v-if="NewcateId!='40125'">
+    <div class="CmsNormal" v-else>
       <transition name="slide">
         <div key="1" v-if="!waiting" style="display:flex;">
           <div class="DetailTitle" v-if="OtherPageImg">
@@ -158,6 +158,9 @@ export default class InsCmsContent extends Vue {
       this.NewcmsId = result.CMS.Id;
       this.waiting = false;
       if (result.CMS.Title) document.title = result.CMS.Title;
+      if (result.CMS.Key === 'ContactUs') {
+        this.Regnay();
+      }
     });
   }
   getmap () {
@@ -225,7 +228,7 @@ export default class InsCmsContent extends Vue {
   }
   created () {
     this.getContent();
-    this.Regnay();
+    // this.Regnay();
     this.getIndexshop();
     this.showContent(20288, 0);
     this.getmap();

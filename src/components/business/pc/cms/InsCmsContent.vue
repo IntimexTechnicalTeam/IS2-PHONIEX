@@ -1,7 +1,7 @@
 <template>
   <div id="container" class="PcContact" :class="{'ENG' : $Storage.get('locale') === 'E'}">
   <!-- 联络我们页面 -->
-    <div class="Cmsbg" v-if="NewcateId=='40125'">
+    <div class="Cmsbg" v-if="content.Key === 'ContactUs'">
       <transition name="slide">
         <div key="1" v-if="!waiting">
            <div class="DetailTitle" v-if="ImgList">
@@ -52,7 +52,7 @@
         </div>
     </div>
     <!-- 其他页面 -->
-    <div class="CmsNormal" v-if="NewcateId!='40125'">
+    <div class="CmsNormal" v-else>
       <transition name="slide">
         <div key="1" v-if="!waiting">
           <div class="DetailTitle" v-if="OtherPageImg">
@@ -199,7 +199,7 @@ export default class InsCmsContent extends Vue {
     this.getContent();
     this.getIndexshop();
     this.showContent(20288, 0);
-    this.Regnay();
+    // this.Regnay();
     this.getmap();
   }
   getContent () {
@@ -213,6 +213,11 @@ export default class InsCmsContent extends Vue {
     this.NewcmsId = result.CMS.Id;
     this.waiting = false;
     if (result.CMS.Title) document.title = result.CMS.Title;
+    console.log(result.CMS, '查查');
+
+    if (result.CMS.Key === 'ContactUs') {
+      this.Regnay();
+    }
   });
 }
 getmap () {

@@ -52,27 +52,25 @@ export default class PkNews extends Vue {
   lastestContents: any[] = [];
   pencaiTitle: string = '';
   private navId:any = 0;
+  currentPage: number = 1; // 当前页
+  pageSize: number = 3; // 每页显示条目个数
+  private SortOrder: string = 'asc';
+  private SortName: string = 'CreateDate'
   getNews () {
-    var cond = {
-      Page: 1,
-      PageSize: 3,
-      catId: 40127
-    };
-    this.$Api.cms.getLastestContents(cond).then(result => {
-      result.Data.forEach(function (item) {
-        item.CreateDate = item.CreateDate.substring(
-          0,
-          item.CreateDate.indexOf(' ')
-        );
+    // var cond = {
+    //   Page: 1,
+    //   PageSize: 3,
+    //   catId: 40127
+    // };
+    let catId = 40127;
+    this.$Api.cms.getFromContentByCatId(catId, this.currentPage, this.pageSize, false, this.SortName, this.SortOrder)
+      .then(result => {
+        this.lastestContents = result.Data;
+        this.pencaiTitle = result.Data[0].Category.Name;
+        for (var i = 0; i < result.Data.length; i++) {
+          this.navId = result.Data[i].Id;
+        }
       });
-      this.lastestContents = result.Data;
-      this.pencaiTitle = result.Data[0].Category.Name;
-      for (var i = 0; i < result.Data.length; i++) {
-        this.navId = result.Data[i].Id;
-      }
-      console.log(result, '扫');
-      console.log(this.navId, '查ID');
-    });
   }
   mounted () {
     this.getNews();
@@ -118,7 +116,8 @@ export default class PkNews extends Vue {
   }
   .Background{
     width: 100%;
-    min-height: 970px;
+    min-height: 910px;
+    padding-bottom: 60px;
     position: relative;
     &::before{
       content: '';
