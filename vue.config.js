@@ -3,16 +3,25 @@ const fs = require('fs');
 const resolve = dir => path.join(__dirname, dir);
 let apiServer = 'http://api.dev.in-store.hk:84';
 let AdminServer = 'http://admin.dev.in-store.hk:84';
+let PeyUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+let RnpUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
+
 let param = getArgList();
 if (param === 'dev') {
     apiServer = 'http://api.dev.in-store.hk:84';
     AdminServer = 'http://admin.dev.in-store.hk:84';
+    PeyUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+    RnpUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
 } else if (param === 'uat') {
     apiServer = 'https://api.uat2.intimex.hk';
     AdminServer = 'https://admin.uat2.intimex.hk';
+    PeyUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+    RnpUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
 } else if (param === 'prod') {
     apiServer = 'https://api.uat.in-store.hk';
     AdminServer = 'https://admin.uat.in-store.hk';
+    PeyUrl = 'https://pg.uat2.intimex.hk:80/pg/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+    RnpUrl = 'https://pg.uat2.intimex.hk:80/pg/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
 }
 
 function getArgList() {
@@ -26,7 +35,7 @@ function getArgList() {
     return mode;
 };
 let p = './src/sdk/common/ApiAndAdminServer.ts';
-fs.writeFileSync(p, 'module.exports = { apiServer: \'' + apiServer + '\', AdminServer: \'' + AdminServer + '\' };\r\n');
+fs.writeFileSync(p, 'module.exports = { apiServer: \'' + apiServer + '\', AdminServer: \'' + AdminServer + '\', PeyUrl: \'' + PeyUrl + '\', RnpUrl: \'' + RnpUrl + '\' };\r\n');
 
 // 区分運行環境，設置CND
 const JS_CDN = process.env.NODE_ENV === 'development' ?

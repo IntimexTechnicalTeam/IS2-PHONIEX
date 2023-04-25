@@ -1,9 +1,20 @@
 const ana = require('./ApiAndAdminServer');
 const AppId = '7e0890be-355e-4f80-89c2-3711bca35331';
+
+// UAT pg
+// const PeyUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+// const RnpUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
+
+// PRD pg
+// const PeyUrl = 'https://pg.uat2.intimex.hk:80/pg/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+// const RnpUrl = 'https://pg.uat2.intimex.hk:80/pg/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
+
 // let AdminServer = 'http://admin.dev.in-store.hk:84'; // DEV
 // let AdminServer = 'https://admin.uat.intimex.hk'; // UAT
 let AdminServer = ana.AdminServer;
 let apiServer = ana.apiServer;
+let PeyUrl = ana.PeyUrl;
+let RnpUrl = ana.RnpUrl;
 module.exports = {
   // instore app id admin的id
   AppId: AppId, // hongkong taste
@@ -19,6 +30,10 @@ module.exports = {
   // admin server url, for login management platform 統一配置admin服務器
 
   AdminServer: AdminServer,
+  // 正常支付地址
+  PeyUrl: PeyUrl,
+  // Regnpay支付地址
+  RnpUrl: RnpUrl,
   // url '/admin' auto open admin tab
   AutoOpenAdmin: true,
   // admin login url 統一配置admin登錄地址

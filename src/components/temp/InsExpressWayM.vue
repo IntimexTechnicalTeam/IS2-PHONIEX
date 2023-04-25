@@ -269,6 +269,8 @@ export default class InsExpressWay extends Vue {
     private PickupDateRequire: boolean = false;
     // 自取(人)信息是否必填
     private PickupInfoRequire: boolean = false;
+    // 購物車數據是否獲取完畢標識
+    private ready: boolean = false;
 
     @Prop({ default: false }) private lockFare!: boolean;
     pickerOptions : object = {
@@ -312,10 +314,14 @@ export default class InsExpressWay extends Vue {
           this.ChosenExpressPoint = new ExpressPoint();
         }
       });
-      if (!this.$store.state.shopCart) this.$store.dispatch('setShopCart', this.$Api.shoppingCart.getShoppingCart());
+      if (!this.$store.state.shopCart) {
+        this.$store.dispatch('setShopCart', this.$Api.shoppingCart.getShoppingCart());
+      }
       let shopcart = this.$store.state.shopCart.then((result) => {
         this.TotalWeight = result.ShopCart.TotalWeight;
         this.ItemsAmount = result.ShopCart.ItemsAmount;
+        this.ready = true;
+        this.onChosenExpressChange();
       });
     }
     @Watch('PickAddress', { deep: true })
@@ -335,7 +341,7 @@ export default class InsExpressWay extends Vue {
         this.PickAddress.ExpressPointId = this.CurrentPickupAddress.Id;
         this.PickAddress.CompanyAddress = this.CurrentPickupAddress.Address;
     }
-    @Watch('ChosenExpress')
+    // @Watch('ChosenExpress')
     onChosenExpressChange () {
       this.loading = true;
       this.chooseCharge = false;
@@ -622,6 +628,9 @@ export default class InsExpressWay extends Vue {
     ExpressSelect () {
       (this.$refs.adderform as InsForm).reset();
       this.showEdit = false;
+      if (this.ready) {
+        this.onChosenExpressChange();
+      }
     }
 
         // 獲取（新）順豐自提點國家列表
