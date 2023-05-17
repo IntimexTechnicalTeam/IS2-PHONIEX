@@ -4,7 +4,7 @@
             <img :src="isClick?AttrImg:CurrentPic" @click="viewImg(currentIndex)">
           </div>
         <div class="swiper-father">
-          <swiper :options="SwiperOption" ref="mySwiper" style="z-index:1000;">
+          <swiper :options="SwiperOption" ref="mySwiper">
             <swiperSlide v-for="(page,idx) in ShowItems" :key="idx">
               <div class="in_slider_page_container">
                 <div class="in_slider_page_item" v-for="(item,index) in page" :key="index">

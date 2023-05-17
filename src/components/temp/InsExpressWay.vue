@@ -95,6 +95,12 @@
             </InsForm>
           </div>
           </Collaspe>
+          <div class="TimeRangItem">
+              <p class="note">{{$t('Message.Remark')}}</p>
+              <div class="inputMain">
+                <textarea id="TimeNote" v-model="TimeNote" @change="TimeNoteChange"></textarea>
+              </div>
+          </div>
       </div>
 
       <!-- 门店自提（地址、門店信息） -->
@@ -403,7 +409,7 @@ export default class InsExpressWay extends Vue {
           this.DateSelect = '';
           this.TimeNote = '';
           $('#TimeRange').attr('disabled', 'disabled');
-          $('#TimeNote').attr('disabled', 'disabled');
+          // $('#TimeNote').attr('disabled', 'disabled');
         });
       } else {
         console.log(this.$store.state.pickUpExpress, 'pickUpExpress2');
@@ -784,6 +790,7 @@ export default class InsExpressWay extends Vue {
   .select_main {
     flex:1;
     flex-flow: 1;
+    display: flex;
     /deep/ .el-select {
       width: 230px;
       &:nth-child(1) {
@@ -894,6 +901,30 @@ export default class InsExpressWay extends Vue {
         .selected_item{
           border: solid 2px @base_color;
         }
+        }
+        .TimeRangItem{
+          padding: 20px;
+          .note{
+            font-size: 16px;
+            margin-bottom: 10px;
+          }
+          .inputMain{
+            display: flex;
+            flex-grow: 1;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            textarea{
+              width: 100%;
+              height: 100px;
+              border: 1px solid #DCDFE6;
+              color: #606266;
+              outline: 0;
+              padding: 10px;
+              box-sizing: border-box;
+              font-size: 16px;
+              word-break: break-word;
+            }
+          }
         }
     }
     /deep/ .in_select_main{

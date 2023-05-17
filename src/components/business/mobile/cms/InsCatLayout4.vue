@@ -2,17 +2,31 @@
     <div class="cms-list">
         <ul>
             <li v-for="(cms,index) in cmsData" :key="index">
-                <router-link :to="'/cms/content/'+cms.Id">
-                    <div class="cover">
-                        <img :src="cms.Cover" alt=""/>
-                    </div>
-                    <div class="introduce">
-                        <p class="title">{{cms.Title}}</p>
-                        <p class="createDate">{{cms.CreateDate}}</p>
-                        <p class="desc">{{cms.Desc}}</p>
-                        <p class="viewMore"><span>{{$t('Message.ViewDetail')}}</span></p>
-                    </div>
-                </router-link>
+                <div class="cmsData_url" v-if="cms.Url">
+                    <a @click="toUrl(cms)" >
+                        <div class="cover">
+                            <img :src="cms.Cover" alt=""/>
+                        </div>
+                        <div class="introduce">
+                            <p class="title">{{cms.Title}}</p>
+                            <p class="desc">{{cms.Desc}}</p>
+                            <p class="viewMore"><span>{{$t('Message.ViewDetail')}}</span></p>
+                        </div>
+                    </a>
+                </div>
+                <div v-else>
+                    <router-link :to="'/cms/content/'+cms.Id">
+                        <div class="cover">
+                            <img :src="cms.Cover" alt=""/>
+                        </div>
+                        <div class="introduce">
+                            <p class="title">{{cms.Title}}</p>
+                            <!-- <p class="createDate">{{cms.CreateDate}}</p> -->
+                            <p class="desc">{{cms.Desc}}</p>
+                            <p class="viewMore"><span>{{$t('Message.ViewDetail')}}</span></p>
+                        </div>
+                    </router-link>
+                </div>
             </li>
         </ul>
 
@@ -35,6 +49,15 @@ export default class InsCatLayout1 extends Vue {
 
     private tips:boolean = true;
     private LoadingInstance!: any;
+
+    toUrl (n) {
+    //   console.log(n, '检查URL');
+      if (!n.IsOpenWindows && n.Url) {
+        window.location.href = n.Url;
+      } else if (n.IsOpenWindows && n.Url) {
+        window.open(n.Url);
+      }
+    }
 
     loading (e) {
       if (this.tips) {
@@ -70,13 +93,15 @@ export default class InsCatLayout1 extends Vue {
         width: 100%;
         //  float: left;
         //  margin-right: 2.66%;
-        margin-bottom: 3.75rem;
+        margin-bottom: 2rem;
         //  &:nth-child(4n){
         //    margin-right: 0%!important;
         //  }
         a{
             display:block;
             border:1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
         //  transition: all .3s ease;
         // -o-transition: all .3s ease;
         // -webkit-transition: all .3s ease;
@@ -97,12 +122,12 @@ export default class InsCatLayout1 extends Vue {
             padding-bottom: 1.6rem;
             .title{
             //  font-size:18px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
             padding-bottom: 10px;
             border-bottom: 1px solid #eee;
-            color:#484848;
-            margin-bottom: 10px;
+            color:#b59e72;
+            margin-bottom: 5px;
             text-overflow: -o-ellipsis-lastline;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -110,7 +135,7 @@ export default class InsCatLayout1 extends Vue {
             -webkit-line-clamp: 2;
             line-clamp: 2;
             -webkit-box-orient: vertical;
-            max-height: 40px;
+            max-height: 44px;
             margin-top: 20px;
             }
             .createDate{
@@ -121,10 +146,10 @@ export default class InsCatLayout1 extends Vue {
             }
             .desc{
             //  font-size: 14px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color:#000000;
             //  margin-bottom: 40px;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             text-overflow: -o-ellipsis-lastline;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -152,7 +177,10 @@ export default class InsCatLayout1 extends Vue {
         .cover{
             width: 100%;
             img{
-            width: 100%;
+                width: 100%;
+                height: 34rem;
+                object-fit: contain;
+                display: block;
             }
         }
         }
@@ -161,8 +189,8 @@ export default class InsCatLayout1 extends Vue {
     .loading_box{
         position: relative;
         text-align: center;
-        margin-bottom: 7.5rem;
-        margin-top: 6rem;
+        margin-bottom: 3rem;
+        margin-top: 3rem;
 
         &:before{
             background:#ddd;
