@@ -367,6 +367,7 @@ getmap () {
     }
     .anwer{
       margin-bottom: 20px;
+      word-break: break-word;
       p{
         word-break: break-word;
         font-size: 16px;

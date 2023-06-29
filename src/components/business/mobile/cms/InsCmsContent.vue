@@ -251,6 +251,7 @@ export default class InsCmsContent extends Vue {
     float:right;
     .anwer{
       margin-bottom: 20px;
+      word-break: break-word;
     }
     .back{
       background: #ccc;

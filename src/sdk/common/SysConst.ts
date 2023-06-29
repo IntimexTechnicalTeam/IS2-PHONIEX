@@ -1,6 +1,6 @@
 const all = require('./SysConst2.ts');
 export const AppId: string = all.AppId;
-export const PeyUrl: string = all.PeyUrl;
+export const PayUrl: string = all.PayUrl;
 export const RnpUrl: string = all.RnpUrl;
 export const ApiServer: string = all.ApiServer;
 export const ApiVersion: string = all.ApiVersion;

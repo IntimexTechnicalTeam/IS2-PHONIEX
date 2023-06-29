@@ -2,18 +2,18 @@ const ana = require('./ApiAndAdminServer');
 const AppId = '7e0890be-355e-4f80-89c2-3711bca35331';
 
 // UAT pg
-// const PeyUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+// const PayUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
 // const RnpUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
 
 // PRD pg
-// const PeyUrl = 'https://pg.uat2.intimex.hk:80/pg/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+// const PayUrl = 'https://pg.uat2.intimex.hk:80/pg/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
 // const RnpUrl = 'https://pg.uat2.intimex.hk:80/pg/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
 
 // let AdminServer = 'http://admin.dev.in-store.hk:84'; // DEV
 // let AdminServer = 'https://admin.uat.intimex.hk'; // UAT
 let AdminServer = ana.AdminServer;
 let apiServer = ana.apiServer;
-let PeyUrl = ana.PeyUrl;
+let PayUrl = ana.PayUrl;
 let RnpUrl = ana.RnpUrl;
 module.exports = {
   // instore app id admin的id
@@ -31,7 +31,7 @@ module.exports = {
 
   AdminServer: AdminServer,
   // 正常支付地址
-  PeyUrl: PeyUrl,
+  PayUrl: PayUrl,
   // Regnpay支付地址
   RnpUrl: RnpUrl,
   // url '/admin' auto open admin tab

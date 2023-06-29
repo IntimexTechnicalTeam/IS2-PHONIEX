@@ -130,7 +130,7 @@ export default class Result extends Vue {
             // this.$router.push({ path: '/payment/' + this.paymentMethod.Code + '/' + this.result.Id });
             // window.location.href = '/PG/pay/' + this.paymentMethod.Code + '/ISRNP/' + this.result.Id;
             var url = RnpUrl;
-            window.location.href = url.replace('ADDID', AppId).replace('ORDER_ID', this.result.Id).replace('PAYMENT_TYPE', this.paymentMethod.Code);
+            window.location.href = url.replace('APPID', AppId).replace('ORDER_ID', this.result.Id).replace('PAYMENT_TYPE', this.paymentMethod.Code);
           } else {
             // alert(result.data.Message);
             // this.$Confirm('', '支付失败，请稍后再试！');
